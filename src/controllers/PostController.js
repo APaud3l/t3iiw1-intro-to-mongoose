@@ -8,13 +8,22 @@ async function createPost(title, content) {
         content: content
         // Date has a default value
     });
-    
+
     return result;
 }
 
-async function getPost() {}
+async function getPost(query) {
+    // let result = await PostModel.findOne({key: value})
+    let result = await PostModel.findOne(query);
 
-async function getPosts() {}
+    return result;
+}
+
+async function getPosts(query) {
+    let result = await PostModel.find(query);
+
+    return result;
+}
 
 async function updatePost() {}
 
