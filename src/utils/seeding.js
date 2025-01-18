@@ -1,6 +1,6 @@
 // Seed values into the database
 
-const { createPost, getPost } = require("../controllers/PostController");
+const { createPost, getPost, getPosts } = require("../controllers/PostController");
 const { createUser } = require("../controllers/UserController");
 const { dbConnect, dbDisconnect } = require("./database");
 
@@ -14,18 +14,39 @@ async function seed() {
 
     await createPost(
         "Important Post", 
-        "This is really important!",
+        [
+            {
+                languageCode: "en",
+                content: "This is really important!"
+            },
+            {
+                languageCode: "ge",
+                content: "asodiy asndifu"
+            }
+        ],
         newUser.id
     );
     
     await createPost(
         "No so Important Post", 
-        "This is really not important!", 
+        [
+            // {
+            //     languageCode: "en",
+            //     content: "This is really not important!"
+            // },
+            {
+                languageCode: "ge",
+                content: "asodiy asndifu sdfg sdfg"
+            }
+        ], 
         newUser.id
     );
 
-    let getPostResult = await getPost({title: "Important Post"});
-    console.log(getPostResult.content);
+    let getPostResult = await getPost({
+        "content.languageCode": "en"
+    });
+
+    console.log(getPostResult);
 
     console.log("Seeding complete. Disconnecting...");
 

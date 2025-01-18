@@ -5,13 +5,13 @@ const router = express.Router();
 
 // Create Post
 
-// Get post based on query
+// Get posts based on query
 router.get("/search/query", async (request, response) => {
     // Get the query from the request body
     let query = request.body.query;
 
     // Use the query in the POST CRUD operation
-    let result = await getPost(query);
+    let result = await getPosts(query);
     
     // Return the result
     response.json({

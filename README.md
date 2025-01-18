@@ -20,5 +20,5 @@ sudo service mongod restart
 
 - Saturday:
  - Use MongoDB in Express Route
- - Document Referencing
+ - Document Referencing and Populating
  - Subdocuments

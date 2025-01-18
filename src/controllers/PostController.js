@@ -2,7 +2,7 @@
 
 const { PostModel } = require("../models/PostModel")
 
-async function createPost(title, content, authorId) {
+async function createPost(title, content = null, authorId) {
     let result = await PostModel.create({
         title: title,
         content: content,
